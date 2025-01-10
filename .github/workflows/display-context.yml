@@ -4,20 +4,25 @@ name: Display context
 on:
   workflow_dispatch:
 
+env:
+  EVENT_CONTEXT: ${{ toJSON(github.event) }}
+  FULL_CONTEXT: ${{ toJSON(github) }}
+  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  display:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - env:
-          EVENT_CONTEXT: ${{ toJSON(github.event) }}
-          FULL_CONTEXT: ${{ toJSON(github) }}
+       # - env:
+       #     EVENT_CONTEXT: ${{ toJSON(github.event) }}
+       #     FULL_CONTEXT: ${{ toJSON(github) }}
       - run: |
           echo $EVENT_CONTEXT
+          
       - run: |
           echo $FULL_CONTEXT
           
