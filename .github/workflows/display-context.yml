@@ -16,10 +16,8 @@ jobs:
       - env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
           FULL_CONTEXT: ${{ toJSON(github) }}
-      - name: Event
-        run: |
+      - run: |
           echo $EVENT_CONTEXT
-      - name: All
-        run: |
+      - run: |
           echo $FULL_CONTEXT
           
